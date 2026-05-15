@@ -1,0 +1,2 @@
+# innerly-delete-account
+Delete 
