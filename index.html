@@ -6,329 +6,154 @@
   <title>Innerly — Eliminar cuenta</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #0f1510;
-      --card: #1a1f18;
-      --border: #2a302a;
-      --sage: #5C7A59;
-      --sage-light: #7a9e77;
-      --text: #ede8e0;
-      --soft: #8a9088;
-      --danger: #c0574a;
-      --danger-bg: #2a1a18;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: var(--bg);
-      color: var(--text);
       font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
+      background: #1a2318;
+      color: #d4ddd0;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
+      padding: 48px 16px 60px;
     }
-
-    /* Ambient orb */
-    body::before {
-      content: '';
-      position: fixed;
-      top: -120px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 400px;
-      background: radial-gradient(ellipse, rgba(92,122,89,0.12) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .container {
-      position: relative;
-      z-index: 1;
-      max-width: 560px;
-      width: 100%;
-    }
-
-    /* Logo */
-    .logo {
+    .header {
       text-align: center;
-      margin-bottom: 36px;
+      margin-bottom: 32px;
+      position: relative;
     }
-    .logo-icon {
-      font-size: 40px;
-      display: block;
-      margin-bottom: 8px;
-      animation: float 4s ease-in-out infinite;
+    .leaf-icon { font-size: 2.6rem; display: block; margin-bottom: 10px; filter: drop-shadow(0 2px 8px rgba(80,160,80,0.4)); }
+    .header h1 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 600; color: #e8f0e4; margin-bottom: 6px; }
+    .header p { color: #8aaa82; font-size: 0.9rem; font-weight: 300; }
+    .lang-toggle {
+      position: absolute; top: 4px; right: 0;
+      display: flex; background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; padding: 3px; gap: 2px;
     }
-    .logo-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      font-weight: 600;
-      color: var(--text);
-      letter-spacing: -0.02em;
+    .lang-btn {
+      background: none; border: none; color: #8aaa82;
+      font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 500;
+      padding: 4px 12px; border-radius: 999px; cursor: pointer; transition: all 0.2s;
     }
-    .logo-tagline {
-      font-size: 13px;
-      color: var(--soft);
-      margin-top: 4px;
-      letter-spacing: 0.04em;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    /* Card */
+    .lang-btn.active { background: #4a7c45; color: #e8f0e4; }
     .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 36px 32px;
-      margin-bottom: 20px;
+      background: #243022; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px; padding: 32px 28px; max-width: 580px; margin: 0 auto;
     }
-
-    .card h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 12px;
-      letter-spacing: -0.02em;
-    }
-
-    .card p {
-      font-size: 14px;
-      line-height: 1.7;
-      color: var(--soft);
-      margin-bottom: 16px;
-    }
-
-    /* Steps */
-    .steps {
-      list-style: none;
-      margin: 20px 0 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .steps li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 14px;
-      color: var(--text);
-      line-height: 1.5;
-    }
-    .step-num {
-      flex-shrink: 0;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: rgba(92,122,89,0.18);
-      border: 1px solid var(--sage);
-      color: var(--sage-light);
-      font-size: 12px;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 1px;
-    }
-
-    /* Divider */
-    .divider {
-      height: 1px;
-      background: var(--border);
-      margin: 24px 0;
-    }
-
-    /* Warning box */
+    .card h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600; color: #e8f0e4; margin-bottom: 12px; }
+    .card > .intro { font-size: 0.9rem; color: #8aaa82; line-height: 1.65; margin-bottom: 24px; }
     .warning {
-      background: var(--danger-bg);
-      border: 1px solid rgba(192,87,74,0.3);
-      border-radius: 14px;
-      padding: 14px 16px;
-      font-size: 13px;
-      color: #e08880;
-      line-height: 1.6;
-      margin-bottom: 24px;
+      background: rgba(200,80,60,0.12); border: 1px solid rgba(200,80,60,0.3);
+      border-radius: 10px; padding: 14px 16px; font-size: 0.875rem; color: #f0a090; line-height: 1.55; margin-bottom: 28px;
     }
-    .warning strong {
-      color: #e8a09a;
-      font-weight: 500;
+    .warning strong { color: #f87171; }
+    .section-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #6a8a64; margin-bottom: 16px; }
+    .steps { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+    .step { display: flex; gap: 14px; align-items: flex-start; }
+    .step-num {
+      width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid #4a7c45;
+      color: #8acc82; font-size: 0.78rem; font-weight: 500;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
     }
-
-    /* Data table */
-    .data-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-      margin-bottom: 8px;
-    }
+    .step-text { font-size: 0.92rem; color: #c8d8c4; line-height: 1.6; }
+    .step-text strong { color: #e8f0e4; font-weight: 500; }
+    hr { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 28px 0; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.865rem; }
     .data-table th {
-      text-align: left;
-      color: var(--soft);
-      font-weight: 400;
-      font-size: 11px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0 0 10px;
-      border-bottom: 1px solid var(--border);
+      text-align: left; color: #6a8a64; font-weight: 500; font-size: 0.7rem;
+      text-transform: uppercase; letter-spacing: 0.08em; padding: 0 12px 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     .data-table td {
-      padding: 10px 0;
-      color: var(--text);
-      border-bottom: 1px solid rgba(42,48,42,0.6);
-      vertical-align: top;
+      padding: 13px 12px 13px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+      vertical-align: middle; color: #b8ccb4; line-height: 1.5;
     }
-    .data-table td:first-child { color: var(--soft); width: 44%; }
     .data-table tr:last-child td { border-bottom: none; }
-
-    .badge {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 500;
-    }
-    .badge-del { background: rgba(192,87,74,0.15); color: #e08880; }
-    .badge-keep { background: rgba(92,122,89,0.15); color: var(--sage-light); }
-
-    /* Email button */
-    .btn-email {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      padding: 14px;
-      border-radius: 14px;
-      background: var(--sage);
-      color: #fff;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-      border: none;
-      cursor: pointer;
-      margin-top: 8px;
-    }
-    .btn-email:hover {
-      background: var(--sage-light);
-      transform: translateY(-1px);
-    }
-    .btn-email:active { transform: scale(0.98); }
-
-    /* Footer */
-    .footer {
-      text-align: center;
-      font-size: 12px;
-      color: var(--soft);
-      line-height: 1.6;
-    }
-    .footer a { color: var(--sage-light); text-decoration: none; }
-    .footer a:hover { text-decoration: underline; }
-
-    @media (max-width: 480px) {
-      .card { padding: 28px 20px; }
-    }
+    .data-table td:last-child { color: #8aaa82; font-size: 0.85rem; }
+    .badge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 500; white-space: nowrap; }
+    .badge-red   { background: rgba(248,113,113,0.15); color: #f87171; }
+    .badge-green { background: rgba(80,160,80,0.18);   color: #86efac; }
+    footer { text-align: center; margin-top: 32px; color: #4a6a44; font-size: 0.78rem; }
+    .lang-es .en, .lang-en .es { display: none; }
   </style>
 </head>
-<body>
+<body class="lang-es">
 
-  <div class="container">
-
-    <div class="logo">
-      <span class="logo-icon">🌿</span>
-      <div class="logo-name">Innerly</div>
-      <div class="logo-tagline">Tu compañero de bienestar</div>
+  <div class="header">
+    <span class="leaf-icon">🌿</span>
+    <h1>Innerly</h1>
+    <p class="es">Tu compañero de bienestar</p>
+    <p class="en">Your wellness companion</p>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('es')" id="btn-es">ES</button>
+      <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
     </div>
+  </div>
 
+  <div class="es">
     <div class="card">
-      <h1>Eliminar cuenta y datos</h1>
-      <p>Entendemos que puede que quieras eliminar tu cuenta de Innerly. A continuación encontrarás los pasos para hacerlo y qué ocurre con tus datos.</p>
-
-      <div class="warning">
-        <strong>⚠️ Esta acción es permanente.</strong> Una vez eliminada tu cuenta, no podrás recuperar tus datos de bienestar, hábitos, diario ni historial.
+      <h2>Eliminar cuenta y datos</h2>
+      <p class="intro">Entendemos que puede que quieras eliminar tu cuenta de Innerly. A continuación encontrarás los pasos para hacerlo y qué ocurre con tus datos.</p>
+      <div class="warning">⚠️ <strong>Esta acción es permanente.</strong> Una vez eliminada tu cuenta, no podrás recuperar tus datos de bienestar, hábitos, diario ni historial.</div>
+      <div class="section-label">Cómo solicitar la eliminación</div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text">Abre la app <strong>Innerly</strong> e inicia sesión con tu cuenta de Google.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">Ve a <strong>Ajustes → Cuenta → Eliminar cuenta</strong>.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">Confirma la eliminación. Tus datos se borrarán de forma permanente en un plazo de <strong>30 días</strong>.</div></div>
       </div>
-
-      <p style="font-size:13px; color: var(--soft); margin-bottom:6px; font-weight:500; letter-spacing:0.03em; text-transform:uppercase;">Cómo solicitar la eliminación</p>
-
-      <ol class="steps">
-        <li>
-          <span class="step-num">1</span>
-          <span>Abre la app Innerly e inicia sesión con tu cuenta de Google.</span>
-        </li>
-        <li>
-          <span class="step-num">2</span>
-          <span>Ve a <strong>Ajustes → Cuenta → Eliminar cuenta</strong>.</span>
-        </li>
-        <li>
-          <span class="step-num">3</span>
-          <span>Confirma la eliminación. Tus datos se borrarán de forma permanente en un plazo de <strong>30 días</strong>.</span>
-        </li>
-      </ol>
-
-      <p style="font-size:13px; color:var(--soft);">Si no puedes acceder a la app, también puedes solicitar la eliminación por correo electrónico:</p>
-
-      <a class="btn-email" href="mailto:support@innerly.app?subject=Solicitud%20de%20eliminaci%C3%B3n%20de%20cuenta&body=Hola%2C%20quiero%20eliminar%20mi%20cuenta%20de%20Innerly.%0A%0ACorreo%20asociado%3A%20">
-        ✉️ Solicitar eliminación por email
-      </a>
-
-      <div class="divider"></div>
-
-      <p style="font-size:13px; color: var(--soft); margin-bottom:14px; font-weight:500; letter-spacing:0.03em; text-transform:uppercase;">Qué se elimina y qué se conserva</p>
-
+      <hr />
+      <div class="section-label">Qué se elimina y qué se conserva</div>
       <table class="data-table">
-        <thead>
-          <tr>
-            <th>Tipo de dato</th>
-            <th>Acción</th>
-            <th>Plazo</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Tipo de dato</th><th>Acción</th><th>Plazo</th></tr></thead>
         <tbody>
-          <tr>
-            <td>Perfil y cuenta</td>
-            <td><span class="badge badge-del">Eliminado</span></td>
-            <td>30 días</td>
-          </tr>
-          <tr>
-            <td>Hábitos y rachas</td>
-            <td><span class="badge badge-del">Eliminado</span></td>
-            <td>30 días</td>
-          </tr>
-          <tr>
-            <td>Estado de ánimo, estrés y sueño</td>
-            <td><span class="badge badge-del">Eliminado</span></td>
-            <td>30 días</td>
-          </tr>
-          <tr>
-            <td>Entradas del diario</td>
-            <td><span class="badge badge-del">Eliminado</span></td>
-            <td>30 días</td>
-          </tr>
-          <tr>
-            <td>Registros de compra (legal)</td>
-            <td><span class="badge badge-keep">Conservado</span></td>
-            <td>5 años (obligación legal)</td>
-          </tr>
+          <tr><td>Perfil y cuenta</td><td><span class="badge badge-red">Eliminado</span></td><td>30 días</td></tr>
+          <tr><td>Hábitos y rachas</td><td><span class="badge badge-red">Eliminado</span></td><td>30 días</td></tr>
+          <tr><td>Estado de ánimo, estrés y sueño</td><td><span class="badge badge-red">Eliminado</span></td><td>30 días</td></tr>
+          <tr><td>Entradas del diario</td><td><span class="badge badge-red">Eliminado</span></td><td>30 días</td></tr>
+          <tr><td>Historial de chat con la IA</td><td><span class="badge badge-red">Eliminado</span></td><td>30 días</td></tr>
+          <tr><td>Conexiones con amigos</td><td><span class="badge badge-red">Eliminado</span></td><td>30 días</td></tr>
+          <tr><td>Registros de compra Premium (RevenueCat)</td><td><span class="badge badge-green">Conservado</span></td><td>7 años (obligación legal)</td></tr>
+          <tr><td>Logs de seguridad anonimizados</td><td><span class="badge badge-green">Conservado</span></td><td>90 días</td></tr>
         </tbody>
       </table>
     </div>
-
-    <div class="footer">
-      <p>© 2026 Innerly</p>
-    </div>
-
   </div>
 
+  <div class="en">
+    <div class="card">
+      <h2>Delete account &amp; data</h2>
+      <p class="intro">We understand you may want to delete your Innerly account. Below you'll find the steps to do so and what happens to your data.</p>
+      <div class="warning">⚠️ <strong>This action is permanent.</strong> Once deleted, your wellness data, habits, journal and history cannot be recovered.</div>
+      <div class="section-label">How to request deletion</div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text">Open the <strong>Innerly</strong> app and sign in with your Google account.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">Go to <strong>Settings → Account → Delete account</strong>.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">Confirm the deletion. Your data will be permanently removed within <strong>30 days</strong>.</div></div>
+      </div>
+      <hr />
+      <div class="section-label">What gets deleted and what is retained</div>
+      <table class="data-table">
+        <thead><tr><th>Data type</th><th>Action</th><th>Timeline</th></tr></thead>
+        <tbody>
+          <tr><td>Profile &amp; account</td><td><span class="badge badge-red">Deleted</span></td><td>30 days</td></tr>
+          <tr><td>Habits &amp; streaks</td><td><span class="badge badge-red">Deleted</span></td><td>30 days</td></tr>
+          <tr><td>Mood, stress &amp; sleep logs</td><td><span class="badge badge-red">Deleted</span></td><td>30 days</td></tr>
+          <tr><td>Journal entries</td><td><span class="badge badge-red">Deleted</span></td><td>30 days</td></tr>
+          <tr><td>AI chat history</td><td><span class="badge badge-red">Deleted</span></td><td>30 days</td></tr>
+          <tr><td>Friend connections</td><td><span class="badge badge-red">Deleted</span></td><td>30 days</td></tr>
+          <tr><td>Premium purchase records (RevenueCat)</td><td><span class="badge badge-green">Retained</span></td><td>7 years (legal)</td></tr>
+          <tr><td>Anonymised security logs</td><td><span class="badge badge-green">Retained</span></td><td>90 days</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer>© 2026 Innerly</footer>
+
+  <script>
+    function setLang(lang) {
+      document.body.className = 'lang-' + lang;
+      document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.documentElement.lang = lang;
+    }
+  </script>
 </body>
 </html>
