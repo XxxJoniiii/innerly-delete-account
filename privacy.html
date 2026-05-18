@@ -14,8 +14,6 @@
       min-height: 100vh;
       padding: 48px 16px 80px;
     }
-
-    /* Header */
     .header {
       text-align: center;
       margin-bottom: 40px;
@@ -24,8 +22,6 @@
     .leaf-icon { font-size: 2.4rem; display: block; margin-bottom: 10px; }
     .header h1 { font-family: 'Playfair Display', serif; font-size: 1.9rem; color: #e8f0e4; margin-bottom: 6px; }
     .header .sub { color: #8aaa82; font-size: 0.85rem; }
-
-    /* Lang toggle */
     .lang-toggle {
       position: absolute; top: 4px; right: 0;
       display: flex; background: rgba(255,255,255,0.07);
@@ -37,18 +33,12 @@
       padding: 4px 12px; border-radius: 999px; cursor: pointer; transition: all 0.2s;
     }
     .lang-btn.active { background: #4a7c45; color: #e8f0e4; }
-
-    /* Wrapper */
     .wrap { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
-
-    /* Meta bar */
     .meta-bar {
       background: rgba(74,124,69,0.12); border: 1px solid rgba(74,124,69,0.25);
       border-radius: 12px; padding: 14px 18px;
       font-size: 0.82rem; color: #8acc82; line-height: 1.6;
     }
-
-    /* Section card */
     .card {
       background: #243022; border: 1px solid rgba(255,255,255,0.08);
       border-radius: 16px; padding: 26px 26px;
@@ -67,8 +57,6 @@
     strong { color: #e8f0e4; font-weight: 500; }
     a { color: #8acc82; text-decoration: none; }
     a:hover { text-decoration: underline; }
-
-    /* Data table */
     .tbl { width: 100%; border-collapse: collapse; font-size: 0.855rem; margin-top: 14px; }
     .tbl th {
       text-align: left; color: #6a8a64; font-size: 0.68rem; text-transform: uppercase;
@@ -79,21 +67,15 @@
     .tbl td:first-child { color: #ccdec8; font-weight: 500; width: 28%; }
     .tbl td:nth-child(2) { width: 40%; }
     .tbl td:last-child { width: 32%; color: #8aaa82; font-size: 0.83rem; }
-
-    /* Badge */
     .badge { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 0.7rem; font-weight: 500; white-space: nowrap; }
     .b-enc  { background: rgba(74,124,69,0.2); color: #86efac; }
     .b-share{ background: rgba(251,191,36,0.15); color: #fbbf24; }
     .b-no   { background: rgba(248,113,113,0.12); color: #f87171; }
-
-    /* Bullet list */
     ul.list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
     ul.list li { font-size: 0.9rem; color: #b8ccb4; line-height: 1.6; padding-left: 18px; position: relative; }
     ul.list li::before { content: '·'; position: absolute; left: 4px; color: #4a7c45; font-size: 1.2rem; line-height: 1.3; }
-
     hr { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 14px 0; }
     footer { text-align: center; margin-top: 32px; color: #4a6a44; font-size: 0.78rem; }
-
     .lang-es .en, .lang-en .es { display: none; }
   </style>
 </head>
@@ -120,17 +102,15 @@
     <strong>Aplicación:</strong> Innerly (Android)
   </div>
 
-  <!-- 1. Quién es el responsable -->
   <div class="card">
     <h2><span class="num">1</span> Responsable del tratamiento</h2>
-    
     <ul class="list">
-      
+      <li><strong>Juan Samaniego</strong> (desarrollador independiente)</li>
+      <li>Correo electrónico: <a href="mailto:appinnerly1@gmail.com">appinnerly1@gmail.com</a></li>
     </ul>
     <p style="margin-top:12px;">El tratamiento de datos se rige por el <strong>Reglamento (UE) 2016/679 (RGPD)</strong> y la <strong>Ley Orgánica 3/2018 (LOPDGDD)</strong>.</p>
   </div>
 
-  <!-- 2. Qué datos recogemos -->
   <div class="card">
     <h2><span class="num">2</span> Datos que recogemos y por qué</h2>
     <p>Recogemos únicamente los datos imprescindibles para que la app funcione. A continuación se detalla cada categoría:</p>
@@ -153,17 +133,17 @@
         <tr>
           <td>Registros de estado de ánimo</td>
           <td>Seguimiento de bienestar, análisis de IA</td>
-          <td>Consentimiento &nbsp;<span class="badge b-enc">Cifrado AES-GCM</span></td>
+          <td>Consentimiento &nbsp;<span class="badge b-enc">Cifrado AES-256-GCM</span></td>
         </tr>
         <tr>
           <td>Registros de estrés y sueño</td>
           <td>Seguimiento de bienestar, análisis de IA</td>
-          <td>Consentimiento &nbsp;<span class="badge b-enc">Cifrado AES-GCM</span></td>
+          <td>Consentimiento &nbsp;<span class="badge b-enc">Cifrado AES-256-GCM</span></td>
         </tr>
         <tr>
           <td>Entradas del diario personal</td>
           <td>Reflexión personal, análisis de IA (opcional)</td>
-          <td>Consentimiento &nbsp;<span class="badge b-enc">Cifrado AES-GCM</span></td>
+          <td>Consentimiento &nbsp;<span class="badge b-enc">Cifrado AES-256-GCM</span></td>
         </tr>
         <tr>
           <td>Hábitos y rachas</td>
@@ -194,10 +174,9 @@
     </table>
 
     <hr />
-    <p><strong>Datos de salud mental:</strong> los registros de estado de ánimo, estrés, sueño y entradas del diario se consideran datos especialmente sensibles (art. 9 RGPD). Se cifran con <strong>AES-GCM</strong> en el dispositivo antes de enviarse a los servidores de Firebase. Sin las credenciales del usuario, estos datos son ilegibles.</p>
+    <p><strong>Datos de salud mental:</strong> los registros de estado de ánimo, estrés, sueño y entradas del diario se consideran datos especialmente sensibles (art. 9 RGPD). Se cifran con <strong>AES-256-GCM</strong> en el dispositivo antes de enviarse a los servidores de Firebase. Sin las credenciales del usuario, estos datos son ilegibles.</p>
   </div>
 
-  <!-- 3. IA -->
   <div class="card">
     <h2><span class="num">3</span> Uso de inteligencia artificial (Groq / LLaMA)</h2>
     <p>Innerly utiliza modelos de IA para generar resúmenes de bienestar, sugerencias de hábitos y análisis de patrones. Las llamadas a la IA se realizan a través de un <strong>proxy seguro en Firebase Cloud Functions</strong> (region: europe-west1). La clave de API de Groq <strong>nunca se incluye en el código de la app</strong>.</p>
@@ -205,7 +184,6 @@
     <p>Groq procesa estos datos según su propia <a href="https://groq.com/privacy-policy/" target="_blank">política de privacidad</a>. Los datos se procesan en servidores de Groq Inc. (EE. UU.) con las garantías adecuadas de transferencia internacional.</p>
   </div>
 
-  <!-- 4. Terceros -->
   <div class="card">
     <h2><span class="num">4</span> Terceros con acceso a datos</h2>
     <table class="tbl">
@@ -236,7 +214,6 @@
     <p style="margin-top:14px;"><strong>No vendemos datos a terceros.</strong> No se comparte ninguna información con anunciantes ni con fines de publicidad dirigida.</p>
   </div>
 
-  <!-- 5. Transferencias -->
   <div class="card">
     <h2><span class="num">5</span> Transferencias internacionales</h2>
     <p>Algunos proveedores (Firebase, Groq, RevenueCat) procesan datos en servidores ubicados fuera del Espacio Económico Europeo (EEE), principalmente en Estados Unidos. Estas transferencias se realizan bajo las garantías previstas en el RGPD:</p>
@@ -248,11 +225,10 @@
     <p>El proxy de Firebase Cloud Functions está desplegado en <strong>europe-west1</strong> (Bélgica) para minimizar salidas de datos fuera de la UE.</p>
   </div>
 
-  <!-- 6. Seguridad -->
   <div class="card">
     <h2><span class="num">6</span> Seguridad de los datos</h2>
     <ul class="list">
-      <li>Los datos sensibles (diario, estado de ánimo, preocupaciones) se cifran con <strong>AES-GCM</strong> en el dispositivo antes de enviarse.</li>
+      <li>Los datos sensibles (diario, estado de ánimo, preocupaciones) se cifran con <strong>AES-256-GCM</strong> en el dispositivo antes de enviarse.</li>
       <li>Todas las comunicaciones van cifradas en tránsito mediante <strong>HTTPS/TLS</strong>.</li>
       <li>La clave de la API de IA reside únicamente en el servidor, nunca en la app.</li>
       <li>Se validan y sanean todas las entradas de texto del usuario antes de procesarlas.</li>
@@ -261,7 +237,6 @@
     </ul>
   </div>
 
-  <!-- 7. Derechos -->
   <div class="card">
     <h2><span class="num">7</span> Tus derechos</h2>
     <p>Como usuario residente en la UE tienes los siguientes derechos sobre tus datos:</p>
@@ -277,13 +252,11 @@
     <p>Si no quedas satisfecho con nuestra respuesta, puedes presentar una reclamación ante la <strong>Agencia Española de Protección de Datos (AEPD)</strong> en <a href="https://www.aepd.es" target="_blank">www.aepd.es</a>.</p>
   </div>
 
-  <!-- 9. Guardrails de crisis -->
   <div class="card">
     <h2><span class="num">8</span> Detección de situaciones de crisis</h2>
     <p>La app incluye un sistema automático de detección de palabras clave relacionadas con situaciones de crisis (riesgo de autolesión, pensamientos suicidas). Cuando se detectan, la app <strong>no almacena ni envía el contenido a terceros</strong>: únicamente muestra al usuario recursos de ayuda locales. Ningún dato de este tipo se procesa por la IA ni se guarda en los servidores.</p>
   </div>
 
-  <!-- 10. Retención -->
   <div class="card">
     <h2><span class="num">9</span> Retención de datos</h2>
     <table class="tbl">
@@ -299,7 +272,6 @@
     </table>
   </div>
 
-  <!-- 11. Cambios -->
   <div class="card">
     <h2><span class="num">10</span> Cambios en esta política</h2>
     <p>Podemos actualizar esta política de privacidad cuando sea necesario. Notificaremos los cambios relevantes mediante un aviso en la app o en esta página. La fecha de "última actualización" en la parte superior indica cuándo se realizó la última revisión. El uso continuado de la app tras la publicación de cambios implica su aceptación.</p>
@@ -320,9 +292,9 @@
 
   <div class="card">
     <h2><span class="num">1</span> Data Controller</h2>
-    
     <ul class="list">
-      
+      <li><strong>Juan Samaniego</strong> (individual developer)</li>
+      <li>Email: <a href="mailto:appinnerly1@gmail.com">appinnerly1@gmail.com</a></li>
     </ul>
     <p style="margin-top:12px;">Data processing is governed by the <strong>EU General Data Protection Regulation (GDPR) 2016/679</strong> and Spanish Organic Law 3/2018 (LOPDGDD).</p>
   </div>
@@ -335,9 +307,9 @@
       <tbody>
         <tr><td>Name &amp; email (Google)</td><td>Account identification and access</td><td>Contract &nbsp;<span class="badge b-no">No extra encryption</span></td></tr>
         <tr><td>Profile photo (Google)</td><td>Avatar in profile and friend requests</td><td>Contract &nbsp;<span class="badge b-no">No extra encryption</span></td></tr>
-        <tr><td>Mood logs</td><td>Wellbeing tracking, AI analysis</td><td>Consent &nbsp;<span class="badge b-enc">AES-GCM encrypted</span></td></tr>
-        <tr><td>Stress &amp; sleep logs</td><td>Wellbeing tracking, AI analysis</td><td>Consent &nbsp;<span class="badge b-enc">AES-GCM encrypted</span></td></tr>
-        <tr><td>Journal entries</td><td>Personal reflection, optional AI analysis</td><td>Consent &nbsp;<span class="badge b-enc">AES-GCM encrypted</span></td></tr>
+        <tr><td>Mood logs</td><td>Wellbeing tracking, AI analysis</td><td>Consent &nbsp;<span class="badge b-enc">AES-256-GCM encrypted</span></td></tr>
+        <tr><td>Stress &amp; sleep logs</td><td>Wellbeing tracking, AI analysis</td><td>Consent &nbsp;<span class="badge b-enc">AES-256-GCM encrypted</span></td></tr>
+        <tr><td>Journal entries</td><td>Personal reflection, optional AI analysis</td><td>Consent &nbsp;<span class="badge b-enc">AES-256-GCM encrypted</span></td></tr>
         <tr><td>Habits &amp; streaks</td><td>Habit tracking, friends leaderboard</td><td>Consent &nbsp;<span class="badge b-no">No extra encryption</span></td></tr>
         <tr><td>Water intake</td><td>Daily wellbeing tracking</td><td>Consent &nbsp;<span class="badge b-no">No extra encryption</span></td></tr>
         <tr><td>Friend code &amp; connections</td><td>Social system, leaderboard</td><td>Consent &nbsp;<span class="badge b-share">Shared with friends</span></td></tr>
@@ -346,7 +318,7 @@
       </tbody>
     </table>
     <hr />
-    <p><strong>Mental health data:</strong> mood, stress, sleep and journal entries are treated as special category data (GDPR Art. 9). They are encrypted with <strong>AES-GCM</strong> on-device before being sent to Firebase servers. Without the user's credentials, this data is unreadable.</p>
+    <p><strong>Mental health data:</strong> mood, stress, sleep and journal entries are treated as special category data (GDPR Art. 9). They are encrypted with <strong>AES-256-GCM</strong> on-device before being sent to Firebase servers. Without the user's credentials, this data is unreadable.</p>
   </div>
 
   <div class="card">
@@ -384,7 +356,7 @@
   <div class="card">
     <h2><span class="num">6</span> Data security</h2>
     <ul class="list">
-      <li>Sensitive data (journal, mood, worries) is encrypted with <strong>AES-GCM</strong> on-device before transmission.</li>
+      <li>Sensitive data (journal, mood, worries) is encrypted with <strong>AES-256-GCM</strong> on-device before transmission.</li>
       <li>All communications are encrypted in transit using <strong>HTTPS/TLS</strong>.</li>
       <li>The AI API key resides only on the server, never in the app.</li>
       <li>All user text inputs are validated and sanitised before processing.</li>
@@ -436,7 +408,7 @@
 </div>
 </div>
 
-<footer>© 2026 Innerly </footer>
+<footer>© 2026 Innerly · Juan Samaniego. All rights reserved.</footer>
 
 <script>
   function setLang(lang) {
